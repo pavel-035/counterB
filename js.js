@@ -5,6 +5,7 @@ const list = document.getElementById('list');
 const amount = document.getElementById('amount');
 const bid = document.getElementById('bid');
 const percent = document.getElementById('percent');
+const save = document.getElementById('save');
 
 let bids = [];
 let errorHave = false;
@@ -51,7 +52,6 @@ function resultAfterBid(amount, bid, percent) {
 		negative: null
 	} 
 
-	console.log(amount)
 	result.positive = (amount - bid) + bid * percent
 	result.negative = amount - bid
 
@@ -61,8 +61,15 @@ function resultAfterBid(amount, bid, percent) {
 function newBid(bid) {
 	let result = 0;
 
-	for(let item of bids) {
-		result += item
+	console.log(save.checked)
+	if(save.checked) {
+		for(let item of bids) {
+			result += item * 1.5
+		}	
+	} else {
+		for(let item of bids) {
+			result += item
+		}	
 	}
 
 	return result * 2
